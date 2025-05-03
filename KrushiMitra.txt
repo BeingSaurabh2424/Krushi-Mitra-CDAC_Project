@@ -1,0 +1,214 @@
+
+Project Description = 
+
+Krushimitra is a full-stack web application designed to bridge the gap between local farmers and consumers by offering a platform similar to BigBasket, tailored for rural and semi-urban communities. Farmers can directly list fresh fruits and vegetables, which are then packed and delivered by the shop to end users in a natural and safe manner.
+
+The goal is to empower local farmers by giving them digital access to the marketplace, reduce middlemen, and provide consumers with healthy, farm-fresh produce at their doorstep.
+
+This project follows the MVP (Minimum Viable Product) model with a clean, responsive UI and modular, scalable backend.without middlemen and give customers fresh, healthy food.
+
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+Technologies Used
+
+🔹 Frontend:
+
+ReactJS – for building dynamic and responsive UI
+
+Bootstrap or Tailwind CSS – for styling and layout
+
+Axios – for HTTP requests to the backend
+
+-----------------------------------------------------------------
+🔹 Backend:
+
+Spring Boot (Java) – RESTful API and business logic
+
+Spring Security (Optional) – for role-based authentication
+
+-----------------------------------------------------------------
+
+🔹 Database:
+
+MySQL – to store user, product, and order data
+
+JPA/Hibernate – ORM for database interaction
+
+-----------------------------------------------------------------
+🔹 Tools & DevOps:
+
+Postman – API testing
+
+Git + GitHub – Version control
+
+Maven – Project management
+
+VS Code / IntelliJ – Development environments
+
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+ Key Features (MVP)
+
+👥 User Management
+User registration & login (customer & farmer roles)
+
+Role-based dashboard view
+-------------------------------------------------------------------
+
+🌾 Farmer Functionality
+Add, edit, and manage product listings
+
+View orders placed for their products
+-------------------------------------------------------------------
+
+🛒 Customer Functionality
+Browse available fruits and vegetables
+
+Add items to cart and place orders
+
+View order history
+-------------------------------------------------------------------
+
+📦 Order Management
+Orders stored in DB with status tracking
+
+Shop interface to mark as "Packed"/"Delivered"
+______________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+UI Planning (ReactJS)
+
+1. Homepage
+Banner
+
+Product categories (fruits, vegetables)
+
+Featured Farmers
+
+“Shop Now” CTA
+
+-----------------------------------------------------
+2. Login/Register Page
+
+Role-based: farmer, customer
+
+Simple and clean
+-----------------------------------------------------
+3. Product Listing Page
+
+Filters: category, price
+
+Sorting: price, popularity
+
+“Add to cart” button
+------------------------------------------------------
+4. Product Detail Page
+
+Image, Description
+
+Add Quantity
+
+Add to Cart
+------------------------------------------------------
+5. Cart Page
+
+View selected items
+
+Update quantity
+
+Proceed to Checkout
+-------------------------------------------------------
+
+6. Checkout Page
+
+Address
+
+Order Summary
+
+Confirm Order
+--------------------------------------------------------
+
+7. Farmer Dashboard
+
+Add product
+
+Manage listed items
+
+View orders (if any)
+---------------------------------------------------------
+
+8. Admin Panel (Optional)
+
+Manage users
+
+View sales, stats
+---------------------------------------------------------
+
+
+
+
+Database Table
+
+Users
+
+| Field       | Type     | Description                   |
+| ----------- | -------- | ----------------------------- |
+| user_id    | INT (PK) | Unique ID                     |
+| name        | VARCHAR  | User's full name              |
+| email       | VARCHAR  | Unique, for login             |
+| password    | VARCHAR  | Hashed                        |
+| address     | TEXT     | Delivery address              |
+| phone       | VARCHAR  | Contact number                |
+| role        | ENUM     | 'customer', 'admin', 'farmer' |
+| created_at | DATETIME | Account creation time         |
+
+
+Farmers
+
+| Field         | Type     | Description        |
+| ------------- | -------- | ------------------ |
+| farmer_id    | INT (PK) | Linked to user _id |
+| farm_address | TEXT     | Farm location      |
+| bio           | TEXT     | About the farmer   |
+
+
+Products
+
+| Field          | Type     | Description        |
+| -------------- | -------- | ------------------ |
+| product _id    | INT (PK) | Unique ID          |
+| name           | VARCHAR  | e.g., Tomato       |
+| description    | TEXT     | Short info         |
+| price _per _kg | DECIMAL  | Price per kg/unit  |
+| stock _qty     | DECIMAL  | Available quantity |
+| farmer _id     | INT (FK) | Who listed it      |
+| image _url     | VARCHAR  | Product image path |
+| created _at    | DATETIME | Listed date        |
+
+
+Orders
+| Field        | Type     | Description                                   |
+| ------------ | -------- | --------------------------------------------- |
+| order _id    | INT (PK) | Unique ID                                     |
+| user _id     | INT (FK) | Customer                                      |
+| total _price | DECIMAL  | Total bill                                    |
+| order _date  | DATETIME | Order timestamp                               |
+| status       | ENUM     | 'pending', 'packed', 'delivered', 'cancelled' |
+
+
+Order_items
+
+
+| Field       | Type     | Description            |
+| ----------- | -------- | ---------------------- |
+| item _id    | INT (PK) | Unique                 |
+| order _id   | INT (FK) | Belongs to Order       |
+| product _id | INT (FK) | What product           |
+| quantity    | DECIMAL  | In kg/units            |
+| price       | DECIMAL  | Subtotal for this item |
+
+
+
+
